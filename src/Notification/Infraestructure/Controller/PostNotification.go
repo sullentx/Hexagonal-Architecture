@@ -28,5 +28,5 @@ func (h *PostNotificationHandler) HandlePost(g *gin.Context) {
 		g.JSON(500, gin.H{"error": err.Error()})
 		return
 	}
-	g.JSON(http.StatusCreated, gin.H{"message": "Notificacion creada"})
+	g.JSON(http.StatusCreated, gin.H{"message": "Mensaje enviado"})
 }

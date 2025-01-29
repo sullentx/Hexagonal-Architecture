@@ -73,6 +73,7 @@ func (r *PostgresProductRepository) Put(id int, product entities.Product) error 
 	if err != nil {
 		return err
 	}
+
 	if rowAffected == 0 {
 		return errors.New("producto no encontrado")
 	}
