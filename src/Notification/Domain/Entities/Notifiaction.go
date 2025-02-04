@@ -1,10 +1,11 @@
 package entities
 
 type Notification struct {
-	ID      int
-	Content string
+	ID       int
+	ClientID int
+	Content  string
 }
 
-func NewNotification(Content string) *Notification {
-	return &Notification{Content: Content}
+func NewNotification(clientID int, content string) *Notification {
+	return &Notification{ClientID: clientID, Content: content}
 }

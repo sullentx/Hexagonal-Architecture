@@ -1,9 +1,12 @@
 package domain
 
-import entities "tienda/src/Notification/Domain/Entities"
+import (
+	Client "tienda/src/Client/Domain/entities"
+	entities "tienda/src/Notification/Domain/Entities"
+)
 
 type NotificationRepository interface {
-	Send(nofication entities.Notification) error
+	Send(nofication entities.Notification, client Client.Client) error
 	GetMessages() ([]entities.Notification, error)
 	Search(id int) (entities.Notification, error)
 	Delete(id int) error

@@ -2,6 +2,8 @@ package main
 
 import (
 	"log"
+	infraClient "tienda/src/Client/Infraestructure"
+	routesClient "tienda/src/Client/Infraestructure/routes"
 	infra "tienda/src/Notification/Infraestructure"
 	routesNotification "tienda/src/Notification/Infraestructure/routes"
 	infraestructure "tienda/src/Products/Infraestructure"
@@ -15,6 +17,8 @@ func main() {
 	// Inicializar dependencias
 	infraestructure.Init()
 	infra.Init()
+	infraClient.Init()
+	routesClient.SetRoutes(router, infraClient.CclientSearcHandler)
 	//inicializar rutas
 	routesNotification.SetRoutes(router, infra.OPostNotificationHandler,
 		infra.ODeleteNotificationHadler, infra.OSearchNotificationHadler, infra.OModifyNotificationHadler, infra.OGetNotificationHandler)

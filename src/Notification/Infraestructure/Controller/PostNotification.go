@@ -18,15 +18,14 @@ func NewPostNotificationHandler(postNotificationUseCase *application.PostNotific
 
 func (h *PostNotificationHandler) HandlePost(g *gin.Context) {
 	var notification entities.Notification
-
-	if err := g.ShouldBind(&notification); err != nil {
+	if err := g.ShouldBindJSON(&notification); err != nil {
 		g.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
 	if err := h.PostNotificationUseCase.Execute(notification); err != nil {
-		g.JSON(500, gin.H{"error": err.Error()})
+		g.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
-	g.JSON(http.StatusCreated, gin.H{"message": "Mensaje enviado"})
+	g.JSON(http.StatusCreated, gin.H{"message": "Notificación enviada"})
 }

@@ -3,6 +3,7 @@ package infraestructure
 import (
 	"database/sql"
 	"errors"
+	entitiesC "tienda/src/Client/Domain/entities"
 	entities "tienda/src/Notification/Domain/Entities"
 )
 
@@ -16,9 +17,15 @@ func NewPostgresNotificationRepository(db *sql.DB) *PostgresNotification {
 	return &PostgresNotification{db: db}
 }
 
-func (r PostgresNotification) Send(notification entities.Notification) error {
-	_, err := r.db.Exec("INSERT INTO notifications (content) VALUES ($1)", notification.Content)
-	return err
+func (r *PostgresNotification) Send(notification entities.Notification, client entitiesC.Client) error {
+	_, err := r.db.Exec("INSERT INTO notifications (client_id, content) VALUES ($1, $2)", notification.ClientID, notification.Content)
+	if err != nil {
+		return err
+	}
+
+	// Simular el envío de la notificación por correo electrónico
+
+	return nil
 }
 
 func (r PostgresNotification) GetMessages() ([]entities.Notification, error) {

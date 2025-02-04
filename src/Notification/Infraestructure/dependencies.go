@@ -1,6 +1,7 @@
 package infraestructure
 
 import (
+	infraestructure "tienda/src/Client/Infraestructure"
 	core "tienda/src/Core"
 	application "tienda/src/Notification/Application"
 	controller "tienda/src/Notification/Infraestructure/Controller"
@@ -19,8 +20,9 @@ func Init() {
 	db := core.GetDB()
 
 	notificationRepo := NewPostgresNotificationRepository(db)
+	clientRepo := infraestructure.NewPostgresClientRepository(db)
 
-	SendNotificationUseCase := application.NewPostNotification(notificationRepo)
+	SendNotificationUseCase := application.NewPostNotificationUseCase(notificationRepo, clientRepo)
 	GetAllNotificationUseCase := application.GetAllNotification(notificationRepo)
 	SearchNotificationUseCase := application.SearchNotification(notificationRepo)
 	DeleteNotificationUseCase := application.DeleteNotification(notificationRepo)
