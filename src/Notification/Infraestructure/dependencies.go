@@ -8,11 +8,12 @@ import (
 )
 
 var (
-	OPostNotificationHandler  *controller.PostNotificationHandler
-	OGetNotificationHandler   *controller.GetAllNotificationHandler
-	OSearchNotificationHadler *controller.SearchNotificationHandler
-	ODeleteNotificationHadler *controller.DeleteNotificationHandler
-	OModifyNotificationHadler *controller.ModifyNotificationHandler
+	OPostNotificationHandler    *controller.PostNotificationHandler
+	OGetNotificationHandler     *controller.GetAllNotificationHandler
+	OSearchNotificationHadler   *controller.SearchNotificationHandler
+	ODeleteNotificationHadler   *controller.DeleteNotificationHandler
+	OModifyNotificationHadler   *controller.ModifyNotificationHandler
+	OShortPutNotificationHadler *controller.GetNotificationsHandlerShort
 )
 
 func Init() {
@@ -27,10 +28,12 @@ func Init() {
 	SearchNotificationUseCase := application.SearchNotification(notificationRepo)
 	DeleteNotificationUseCase := application.DeleteNotification(notificationRepo)
 	ModifyNotificationUseCase := application.ModifyNotification(notificationRepo)
+	ShortPutNotificationUseCase := application.NewGetNotificationsUseCase(notificationRepo)
 	//Crear instancias de los controladores
 	OPostNotificationHandler = controller.NewPostNotificationHandler(SendNotificationUseCase)
 	OGetNotificationHandler = controller.NewGetAllNotificationHandler(GetAllNotificationUseCase)
 	OSearchNotificationHadler = controller.NewSearchNotificationHandler(SearchNotificationUseCase)
 	ODeleteNotificationHadler = controller.NewDeleteNotificationHandler(DeleteNotificationUseCase)
 	OModifyNotificationHadler = controller.NewModifyNotificationHandler(ModifyNotificationUseCase)
+	OShortPutNotificationHadler = controller.NewGetNotificationsHandler(ShortPutNotificationUseCase)
 }

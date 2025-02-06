@@ -51,7 +51,7 @@ func (r *PostgresClientRepository) GetClients() ([]entities.Client, error) {
 }
 
 func (r *PostgresClientRepository) Modify(id int, client entities.Client) error {
-	_, err := r.db.Exec("UPDATE clients SET email = $1, password = $2 WHERE id = $3", client.Email, client.Password, client.ID)
+	_, err := r.db.Exec("UPDATE clients SET name = $1, last_name = $2, email = $3, password = $4 WHERE id = $5", client.Name, client.LastName, client.Email, client.Password, id)
 	return err
 }
 

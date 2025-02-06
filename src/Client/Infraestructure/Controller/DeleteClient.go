@@ -12,8 +12,8 @@ type DeleteClientHandler struct {
 	DeleteClientUseCase *application.DeleteClientUseCase
 }
 
-func NewDeleteClientHandler(uc *application.DeleteClientUseCase) *DeleteClientHandler {
-	return &DeleteClientHandler{DeleteClientUseCase: uc}
+func NewDeleteClientHandler(deleteClientUseCase *application.DeleteClientUseCase) *DeleteClientHandler {
+	return &DeleteClientHandler{DeleteClientUseCase: deleteClientUseCase}
 }
 
 func (h *DeleteClientHandler) HandleDelete(g *gin.Context) {

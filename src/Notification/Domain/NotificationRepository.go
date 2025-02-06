@@ -11,4 +11,5 @@ type NotificationRepository interface {
 	Search(id int) (entities.Notification, error)
 	Delete(id int) error
 	ModifyMessage(id int, content string) error
+	GetNotifications(clientID int) ([]entities.Notification, error)
 }

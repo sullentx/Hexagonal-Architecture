@@ -30,5 +30,5 @@ func (h *DeleteNotificationHandler) HandleDelete(g *gin.Context) {
 		return
 	}
 
-	g.JSON(http.StatusOK, gin.H{"message": "Mensaje eliminada"})
+	g.JSON(http.StatusOK, gin.H{"message": "Notificación eliminada"})
 }

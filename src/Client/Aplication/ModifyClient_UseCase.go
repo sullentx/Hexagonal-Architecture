@@ -9,7 +9,7 @@ type ModifyClientUseCase struct {
 	repo domain.ClientRepository
 }
 
-func ModifyClient(repo domain.ClientRepository) *ModifyClientUseCase {
+func NewModifyClient(repo domain.ClientRepository) *ModifyClientUseCase {
 	return &ModifyClientUseCase{repo: repo}
 }
 

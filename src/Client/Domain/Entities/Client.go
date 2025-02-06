@@ -1,11 +1,11 @@
 package entities
 
 type Client struct {
-	ID       int
-	Name     string
-	LastName string
-	Email    string
-	Password string
+	ID       int    `json:"id"`
+	Name     string `json:"name"`
+	LastName string `json:"last_name"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
 func NewClient(Name string, LastName string, Email string, Password string) *Client {

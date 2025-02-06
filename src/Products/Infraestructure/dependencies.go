@@ -7,11 +7,13 @@ import (
 )
 
 var (
-	PostProductsHandler *controller.PostProductsHandler
-	GetProductsHandler  *controller.GetProductsHandler
-	GetOneProductHadler *controller.GetOneProductHandler
-	DeleteProductHadler *controller.DeleteProductHandler
-	PutProductHadler    *controller.PutProductHandler
+	PostProductsHandler   *controller.PostProductsHandler
+	GetProductsHandler    *controller.GetProductsHandler
+	GetOneProductHadler   *controller.GetOneProductHandler
+	DeleteProductHadler   *controller.DeleteProductHandler
+	PutProductHadler      *controller.PutProductHandler
+	GetNewProductsHandler *controller.GetNewProductsHanlderShort
+	LongPollingHandler    *controller.LongPollingHandler
 )
 
 func Init() {
@@ -26,10 +28,15 @@ func Init() {
 	getOneProductUseCase := applicationnegocio.GetOneProduct(productRepo)
 	deleteProductUseCase := applicationnegocio.DeleteProduct(productRepo)
 	putProductUseCase := applicationnegocio.PutProduct(productRepo)
+	getNewProductsUseCase := applicationnegocio.NewGetNewProductsUseCase(productRepo)
+
 	// Crear instancias de los controladores
 	PostProductsHandler = controller.NewPostProductsHandler(createProductUseCase)
 	GetProductsHandler = controller.NewGetProductsHandler(getAllProductsUseCase)
 	GetOneProductHadler = controller.NewGetOneProductHandler(getOneProductUseCase)
 	DeleteProductHadler = controller.NewDeleteProductHandler(deleteProductUseCase)
 	PutProductHadler = controller.NewPutProductUseCase(putProductUseCase)
+	GetNewProductsHandler = controller.NewGetNewProductsHandler(getNewProductsUseCase)
+	LongPollingHandler = controller.NewLongPollingHandler(getNewProductsUseCase)
+
 }

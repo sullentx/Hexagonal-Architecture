@@ -6,7 +6,7 @@ type DeleteClientUseCase struct {
 	repo domain.ClientRepository
 }
 
-func DeleteClient(repo domain.ClientRepository) *DeleteClientUseCase {
+func NewDeleteClient(repo domain.ClientRepository) *DeleteClientUseCase {
 	return &DeleteClientUseCase{repo: repo}
 }
 

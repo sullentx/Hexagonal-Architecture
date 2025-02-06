@@ -11,8 +11,8 @@ type CreateClientHandler struct {
 	CreateClientUseCase *application.CreateClientUseCase
 }
 
-func NewCreateClientHandler(usecase *application.CreateClientUseCase) *CreateClientHandler {
-	return &CreateClientHandler{CreateClientUseCase: usecase}
+func NewCreateClientHandler(createClientUseCase *application.CreateClientUseCase) *CreateClientHandler {
+	return &CreateClientHandler{CreateClientUseCase: createClientUseCase}
 }
 
 func (h *CreateClientHandler) HandleCreate(g *gin.Context) {

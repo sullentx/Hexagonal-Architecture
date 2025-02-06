@@ -14,4 +14,5 @@ type IproductrRepositoy interface {
 	GetOne(id int) (entities.Product, error)
 	Delete(id int) error
 	Put(id int, product entities.Product) error
+	GetNewProducts(lastProductID int) ([]entities.Product, int, error)
 }

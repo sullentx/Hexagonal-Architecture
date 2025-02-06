@@ -9,7 +9,7 @@ type GetClientsUseCase struct {
 	repo domain.ClientRepository
 }
 
-func GetClients(repo domain.ClientRepository) *GetClientsUseCase {
+func NewGetClients(repo domain.ClientRepository) *GetClientsUseCase {
 	return &GetClientsUseCase{repo: repo}
 }
 

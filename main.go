@@ -18,13 +18,15 @@ func main() {
 	infraestructure.Init()
 	infra.Init()
 	infraClient.Init()
-	routesClient.SetRoutes(router, infraClient.CclientSearcHandler)
+	routesClient.SetRoutes(router, infraClient.CclientSearcHandler, infraClient.CreateClientHandler, infraClient.DeleteClientHandler, infraClient.GetClientsHandler,
+		infraClient.ModifyClientHandler)
 	//inicializar rutas
 	routesNotification.SetRoutes(router, infra.OPostNotificationHandler,
-		infra.ODeleteNotificationHadler, infra.OSearchNotificationHadler, infra.OModifyNotificationHadler, infra.OGetNotificationHandler)
+		infra.ODeleteNotificationHadler, infra.OSearchNotificationHadler,
+		infra.OModifyNotificationHadler, infra.OGetNotificationHandler, infra.OShortPutNotificationHadler)
 
 	routes.SetRoutes(router, infraestructure.PostProductsHandler, infraestructure.GetProductsHandler,
-		infraestructure.GetOneProductHadler, infraestructure.DeleteProductHadler, infraestructure.PutProductHadler)
+		infraestructure.GetOneProductHadler, infraestructure.DeleteProductHadler, infraestructure.PutProductHadler, infraestructure.GetNewProductsHandler, infraestructure.LongPollingHandler)
 	// Iniciar el servidor
 
 	log.Println("Server started at :8080")

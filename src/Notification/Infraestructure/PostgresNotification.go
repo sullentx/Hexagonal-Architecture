@@ -28,8 +28,8 @@ func (r *PostgresNotification) Send(notification entities.Notification, client e
 	return nil
 }
 
-func (r PostgresNotification) GetMessages() ([]entities.Notification, error) {
-	rows, err := r.db.Query("SELECT id, content FROM notifications")
+func (r *PostgresNotification) GetMessages() ([]entities.Notification, error) {
+	rows, err := r.db.Query("SELECT id, client_id, content FROM notifications")
 	if err != nil {
 		return nil, err
 	}
@@ -38,7 +38,7 @@ func (r PostgresNotification) GetMessages() ([]entities.Notification, error) {
 	var notifications []entities.Notification
 	for rows.Next() {
 		var notification entities.Notification
-		if err := rows.Scan(&notification.ID, &notification.Content); err != nil {
+		if err := rows.Scan(&notification.ID, &notification.ClientID, &notification.Content); err != nil {
 			return nil, err
 		}
 		notifications = append(notifications, notification)
@@ -46,10 +46,10 @@ func (r PostgresNotification) GetMessages() ([]entities.Notification, error) {
 	return notifications, nil
 }
 
-func (r PostgresNotification) Search(id int) (entities.Notification, error) {
-	row := r.db.QueryRow("SELECT id, content FROM notifications WHERE id = $1", id)
+func (r *PostgresNotification) Search(id int) (entities.Notification, error) {
+	row := r.db.QueryRow("SELECT id, client_id, content FROM notifications WHERE id = $1", id)
 	var notification entities.Notification
-	if err := row.Scan(&notification.ID, &notification.Content); err != nil {
+	if err := row.Scan(&notification.ID, &notification.ClientID, &notification.Content); err != nil {
 		return entities.Notification{}, err
 	}
 	return notification, nil
@@ -83,4 +83,24 @@ func (r PostgresNotification) ModifyMessage(id int, content string) error {
 		return errors.New("notification not found")
 	}
 	return nil
+}
+
+func (r *PostgresNotification) GetNotifications(clientID int) ([]entities.Notification, error) {
+	query := "SELECT id, client_id, content FROM notifications WHERE client_id = $1"
+	rows, err := r.db.Query(query, clientID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var notifications []entities.Notification
+	for rows.Next() {
+		var n entities.Notification
+		if err := rows.Scan(&n.ID, &n.ClientID, &n.Content); err != nil {
+			return nil, err
+		}
+		notifications = append(notifications, n)
+	}
+
+	return notifications, nil
 }

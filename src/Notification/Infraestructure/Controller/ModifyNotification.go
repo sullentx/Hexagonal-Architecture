@@ -32,6 +32,6 @@ func (h *ModifyNotificationHandler) HandleModify(g *gin.Context) {
 	}
 	err = h.ModifyNotificationUseCase.Execute(id, notification.Content)
 	if err == nil {
-		g.JSON(http.StatusOK, gin.H{"message": id})
+		g.JSON(http.StatusOK, gin.H{"message": "Notificación actualizada"})
 	}
 }
