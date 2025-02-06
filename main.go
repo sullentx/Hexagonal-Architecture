@@ -9,6 +9,7 @@ import (
 	infraestructure "tienda/src/Products/Infraestructure"
 	routes "tienda/src/Products/Infraestructure/routes"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,6 +17,11 @@ func main() {
 	router := gin.Default()
 	// Inicializar dependencias
 	infraestructure.Init()
+	config := cors.DefaultConfig()
+	config.AllowAllOrigins = true
+	config.AllowHeaders = []string{"Origin", "Content-Length", "Content-Type", "Authorization"}
+	config.AllowMethods = []string{"POST", "GET", "PUT", "OPTIONS"}
+	router.Use(cors.New(config))
 	infra.Init()
 	infraClient.Init()
 	routesClient.SetRoutes(router, infraClient.CclientSearcHandler, infraClient.CreateClientHandler, infraClient.DeleteClientHandler, infraClient.GetClientsHandler,
