@@ -20,7 +20,7 @@ func main() {
 	config := cors.DefaultConfig()
 	config.AllowAllOrigins = true
 	config.AllowHeaders = []string{"Origin", "Content-Length", "Content-Type", "Authorization"}
-	config.AllowMethods = []string{"POST", "GET", "PUT", "OPTIONS"}
+	config.AllowMethods = []string{"POST", "GET", "PUT", "OPTIONS", "DELETE"}
 	router.Use(cors.New(config))
 	infra.Init()
 	infraClient.Init()
