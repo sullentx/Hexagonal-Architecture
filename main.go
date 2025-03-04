@@ -33,7 +33,9 @@ func main() {
 
 	routes.SetRoutes(router, infraestructure.PostProductsHandler, infraestructure.GetProductsHandler,
 		infraestructure.GetOneProductHadler, infraestructure.DeleteProductHadler, infraestructure.PutProductHadler, infraestructure.GetNewProductsHandler, infraestructure.LongPollingHandler)
-	// Iniciar el servidor
+	// conexion rabbit
+	//rabbitMQAdapter := adapters.InitRabbitMQ()
+	//defer rabbitMQAdapter.Close()
 
 	log.Println("Server started at :8080")
 	log.Fatal(router.Run())
