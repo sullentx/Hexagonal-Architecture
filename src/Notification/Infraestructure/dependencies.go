@@ -23,7 +23,7 @@ func Init() {
 	notificationRepo := NewPostgresNotificationRepository(db)
 	clientRepo := infraestructure.NewPostgresClientRepository(db)
 
-	SendNotificationUseCase := application.NewPostNotificationUseCase(notificationRepo, clientRepo, rabbitMQ)
+	SendNotificationUseCase := application.NewPostNotificationUseCase(notificationRepo, clientRepo)
 	GetAllNotificationUseCase := application.GetAllNotification(notificationRepo)
 	SearchNotificationUseCase := application.SearchNotification(notificationRepo)
 	DeleteNotificationUseCase := application.DeleteNotification(notificationRepo)
