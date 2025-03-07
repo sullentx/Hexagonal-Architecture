@@ -2,7 +2,7 @@ package controller
 
 import (
 	"net/http"
-	application "tienda/src/Notification/Application"
+	application "tienda/src/notification/application"
 
 	"github.com/gin-gonic/gin"
 )

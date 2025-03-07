@@ -1,8 +1,8 @@
 package domain
 
 import (
-	Client "tienda/src/Client/Domain/entities"
-	entities "tienda/src/Notification/Domain/Entities"
+	Client "tienda/src/client/domain/entities"
+	entities "tienda/src/notification/domain/entities"
 )
 
 type NotificationRepository interface {

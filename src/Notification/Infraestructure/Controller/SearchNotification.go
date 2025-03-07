@@ -3,7 +3,7 @@ package controller
 import (
 	"net/http"
 	"strconv"
-	application "tienda/src/Notification/Application"
+	application "tienda/src/notification/application"
 
 	"github.com/gin-gonic/gin"
 )

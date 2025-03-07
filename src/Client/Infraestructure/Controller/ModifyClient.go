@@ -3,8 +3,8 @@ package controller
 import (
 	"net/http"
 	"strconv"
-	application "tienda/src/Client/Aplication"
-	entities "tienda/src/Client/Domain/entities"
+	application "tienda/src/client/aplication"
+	entities "tienda/src/client/domain/entities"
 
 	"github.com/gin-gonic/gin"
 )

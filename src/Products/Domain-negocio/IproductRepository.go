@@ -1,6 +1,6 @@
 package domainnegocio
 
-import entities "tienda/src/Products/Domain-negocio/entities"
+import entities "tienda/src/products/domain-negocio/entities"
 
 //OCP Open Close Principle (Principio de abierto/cerrado)
 //Se pueden agregar nuevos repositorios sin modificar el código de la aplicación

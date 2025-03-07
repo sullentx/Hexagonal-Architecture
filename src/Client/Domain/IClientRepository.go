@@ -1,7 +1,7 @@
 package domain
 
 import (
-	entities "tienda/src/Client/Domain/entities"
+	entities "tienda/src/client/domain/entities"
 )
 
 type ClientRepository interface {

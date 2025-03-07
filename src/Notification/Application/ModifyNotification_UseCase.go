@@ -1,6 +1,6 @@
 package application
 
-import domain "tienda/src/Notification/Domain"
+import domain "tienda/src/notification/domain"
 
 type ModifyNotificationUseCase struct {
 	repo domain.NotificationRepository

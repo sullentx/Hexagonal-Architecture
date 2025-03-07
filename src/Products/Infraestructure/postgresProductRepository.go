@@ -5,7 +5,7 @@ package infraestructure
 import (
 	"database/sql"
 	"errors"
-	entities "tienda/src/Products/Domain-negocio/entities"
+	"tienda/src/products/domain-negocio/entities"
 )
 
 type PostgresProductRepository struct {

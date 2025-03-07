@@ -1,8 +1,8 @@
 package application
 
 import (
-	domain "tienda/src/Notification/Domain"
-	entities "tienda/src/Notification/Domain/Entities"
+	domain "tienda/src/notification/domain"
+	entities "tienda/src/notification/domain/entities"
 )
 
 type GetAllNotificationUseCase struct {

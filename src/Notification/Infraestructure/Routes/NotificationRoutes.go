@@ -1,7 +1,7 @@
 package routes
 
 import (
-	controller "tienda/src/Notification/Infraestructure/Controller"
+	"tienda/src/notification/infraestructure/controller"
 
 	"github.com/gin-gonic/gin"
 )

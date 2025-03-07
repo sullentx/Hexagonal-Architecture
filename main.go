@@ -2,13 +2,13 @@ package main
 
 import (
 	"log"
-	infraClient "tienda/src/Client/Infraestructure"
-	routesClient "tienda/src/Client/Infraestructure/routes"
-	infra "tienda/src/Notification/Infraestructure"
-	"tienda/src/Notification/Infraestructure/adapters"
-	routesNotification "tienda/src/Notification/Infraestructure/routes"
-	infraestructure "tienda/src/Products/Infraestructure"
-	routes "tienda/src/Products/Infraestructure/routes"
+	infraClient "tienda/src/client/infraestructure"
+	routesClient "tienda/src/client/infraestructure/routes"
+	infra "tienda/src/notification/infraestructure"
+	"tienda/src/notification/infraestructure/adapters"
+	routesNotification "tienda/src/notification/infraestructure/routes"
+	infraestructure "tienda/src/products/infraestructure"
+	routes "tienda/src/products/infraestructure/routes"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -23,8 +23,9 @@ func main() {
 	config.AllowHeaders = []string{"Origin", "Content-Length", "Content-Type", "Authorization"}
 	config.AllowMethods = []string{"POST", "GET", "PUT", "OPTIONS", "DELETE"}
 	router.Use(cors.New(config))
-	infra.Init()
+
 	infraClient.Init()
+	infra.Init()
 	routesClient.SetRoutes(router, infraClient.CclientSearcHandler, infraClient.CreateClientHandler, infraClient.DeleteClientHandler, infraClient.GetClientsHandler,
 		infraClient.ModifyClientHandler)
 	//inicializar rutas

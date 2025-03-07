@@ -1,7 +1,7 @@
 package routes
 
 import (
-	controller "tienda/src/Client/Infraestructure/Controller"
+	"tienda/src/client/infraestructure/controller"
 
 	"github.com/gin-gonic/gin"
 )

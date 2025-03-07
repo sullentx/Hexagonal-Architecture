@@ -1,6 +1,6 @@
 package services
 
-import "tienda/src/Notification/Application/repositories"
+import "tienda/src/notification/application/repositories"
 
 type RabbitMQService struct {
 	rabbitMQUseCase *repositories.RabbitMQUseCase

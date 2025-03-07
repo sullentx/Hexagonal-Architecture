@@ -1,8 +1,8 @@
 package application
 
 import (
-	domain "tienda/src/Client/Domain"
-	"tienda/src/Client/Domain/entities"
+	domain "tienda/src/client/domain"
+	"tienda/src/client/domain/entities"
 )
 
 type CreateClientUseCase struct {

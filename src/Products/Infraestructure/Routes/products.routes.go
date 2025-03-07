@@ -2,7 +2,7 @@ package routes
 
 //mapper
 import (
-	controller "tienda/src/Products/Infraestructure/Controller"
+	"tienda/src/products/infraestructure/controller"
 
 	gin "github.com/gin-gonic/gin"
 )

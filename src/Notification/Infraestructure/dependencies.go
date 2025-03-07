@@ -1,13 +1,13 @@
 package infraestructure
 
 import (
-	infraestructure "tienda/src/Client/Infraestructure"
-	core "tienda/src/Core"
-	application "tienda/src/Notification/Application"
-	"tienda/src/Notification/Application/repositories"
-	"tienda/src/Notification/Application/services"
-	controller "tienda/src/Notification/Infraestructure/Controller"
-	"tienda/src/Notification/Infraestructure/adapters"
+	infraestructure "tienda/src/client/infraestructure"
+	core "tienda/src/core"
+	application "tienda/src/notification/application"
+	"tienda/src/notification/application/repositories"
+	"tienda/src/notification/application/services"
+	"tienda/src/notification/infraestructure/adapters"
+	controller "tienda/src/notification/infraestructure/controller"
 )
 
 var (

@@ -1,10 +1,10 @@
 package application
 
 import (
-	domainC "tienda/src/Client/Domain"
-	"tienda/src/Notification/Application/services"
-	domain "tienda/src/Notification/Domain"
-	entities "tienda/src/Notification/Domain/Entities"
+	domainC "tienda/src/client/domain"
+	"tienda/src/notification/application/services"
+	domain "tienda/src/notification/domain"
+	entities "tienda/src/notification/domain/entities"
 )
 
 type PostNotificationUseCase struct {

@@ -2,8 +2,8 @@ package controller
 
 import (
 	"net/http"
-	application "tienda/src/Notification/Application"
-	entities "tienda/src/Notification/Domain/Entities"
+	application "tienda/src/notification/application"
+	entities "tienda/src/notification/domain/entities"
 
 	"github.com/gin-gonic/gin"
 )

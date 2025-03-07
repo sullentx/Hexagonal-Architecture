@@ -1,9 +1,9 @@
 package infraestructure
 
 import (
-	core "tienda/src/Core"
-	applicationnegocio "tienda/src/Products/Application-negocio"
-	controller "tienda/src/Products/Infraestructure/Controller"
+	core "tienda/src/core"
+	applicationnegocio "tienda/src/products/application-negocio"
+	"tienda/src/products/infraestructure/controller"
 )
 
 var (

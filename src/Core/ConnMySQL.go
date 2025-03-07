@@ -11,7 +11,7 @@ var db *sql.DB
 
 func InitPostgres() {
 	var err error
-	connStr := "postgresql://eduardo:@localhost/tiendita?sslmode=disable"
+	connStr := "postgresql://postgres:eduardo@23.22.23.155:5432/postgres?sslmode=disable"
 	db, err = sql.Open("postgres", connStr)
 	if err != nil {
 		log.Fatal(err)

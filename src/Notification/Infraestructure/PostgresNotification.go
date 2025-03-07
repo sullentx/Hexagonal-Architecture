@@ -3,8 +3,8 @@ package infraestructure
 import (
 	"database/sql"
 	"errors"
-	entitiesC "tienda/src/Client/Domain/entities"
-	entities "tienda/src/Notification/Domain/Entities"
+	entitiesC "tienda/src/client/domain/entities"
+	entities "tienda/src/notification/domain/entities"
 )
 
 type PostgresNotification struct {
@@ -35,12 +35,10 @@ func (r *PostgresNotification) GetMessages() ([]entities.Notification, error) {
 	var notifications []entities.Notification
 	for rows.Next() {
 		var notification entities.Notification
-		var clientName string 
+		var clientName string
 		if err := rows.Scan(&notification.ID, &notification.Content, &notification.ClientID, &clientName); err != nil {
 			return nil, err
 		}
-
-
 
 		notifications = append(notifications, notification)
 	}

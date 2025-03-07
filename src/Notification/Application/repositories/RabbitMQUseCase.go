@@ -1,8 +1,6 @@
 package repositories
 
-import (
-	domain "tienda/src/Notification/Domain"
-)
+import "tienda/src/notification/domain"
 
 type RabbitMQUseCase struct {
 	repo domain.IMessagePublisher

@@ -1,6 +1,6 @@
 package application
 
-import domain "tienda/src/Client/Domain"
+import domain "tienda/src/client/domain"
 
 type DeleteClientUseCase struct {
 	repo domain.ClientRepository

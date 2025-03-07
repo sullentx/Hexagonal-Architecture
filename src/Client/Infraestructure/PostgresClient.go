@@ -3,7 +3,7 @@ package infraestructure
 import (
 	"database/sql"
 	"errors"
-	"tienda/src/Client/Domain/entities"
+	"tienda/src/client/domain/entities"
 )
 
 type PostgresClientRepository struct {
