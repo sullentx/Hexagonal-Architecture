@@ -12,6 +12,6 @@ func NewRabbitMQUseCase(repo domain.IMessagePublisher) *RabbitMQUseCase {
 	return &RabbitMQUseCase{repo: repo}
 }
 
-func (uc *RabbitMQUseCase) Execute(message string, id int) error {
-	return uc.repo.PublishMessage(message, id)
+func (uc *RabbitMQUseCase) Execute(message string, id int, name string) error {
+	return uc.repo.PublishMessage(message, id, name)
 }

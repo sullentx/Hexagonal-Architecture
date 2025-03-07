@@ -4,7 +4,10 @@ import (
 	infraestructure "tienda/src/Client/Infraestructure"
 	core "tienda/src/Core"
 	application "tienda/src/Notification/Application"
+	"tienda/src/Notification/Application/repositories"
+	"tienda/src/Notification/Application/services"
 	controller "tienda/src/Notification/Infraestructure/Controller"
+	"tienda/src/Notification/Infraestructure/adapters"
 )
 
 var (
@@ -22,8 +25,11 @@ func Init() {
 
 	notificationRepo := NewPostgresNotificationRepository(db)
 	clientRepo := infraestructure.NewPostgresClientRepository(db)
+	rabbitMQAdapter := adapters.InitRabbitMQ()
+	rabbitMQUseCase := repositories.NewRabbitMQUseCase(rabbitMQAdapter)
+	rabbitMQService := services.NewRabbitMQService(rabbitMQUseCase)
 
-	SendNotificationUseCase := application.NewPostNotificationUseCase(notificationRepo, clientRepo)
+	SendNotificationUseCase := application.NewPostNotificationUseCase(notificationRepo, clientRepo, *rabbitMQService)
 	GetAllNotificationUseCase := application.GetAllNotification(notificationRepo)
 	SearchNotificationUseCase := application.SearchNotification(notificationRepo)
 	DeleteNotificationUseCase := application.DeleteNotification(notificationRepo)

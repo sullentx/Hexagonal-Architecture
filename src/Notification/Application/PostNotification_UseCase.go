@@ -15,8 +15,10 @@ type PostNotificationUseCase struct {
 
 func NewPostNotificationUseCase(notificationRepo domain.NotificationRepository, clientRepo domainC.ClientRepository,
 	rabitSerivce services.RabbitMQService) *PostNotificationUseCase {
-	return &PostNotificationUseCase{notificationRepo: notificationRepo, clientRepo: clientRepo,
-		rabitService: rabitSerivce}
+	return &PostNotificationUseCase{
+		notificationRepo: notificationRepo,
+		clientRepo:       clientRepo,
+		rabitService:     rabitSerivce}
 }
 
 func (uc *PostNotificationUseCase) Execute(notification entities.Notification) error {
@@ -24,8 +26,8 @@ func (uc *PostNotificationUseCase) Execute(notification entities.Notification) e
 	if err != nil {
 		return err
 	}
-	uc.rabitService.SendMessage(notification.Content, notification.ClientID)
-	return uc.notificationRepo.Send(notification, client)
+	uc.rabitService.SendMessage(notification.Content, notification.ClientID, client.Name)
+	return nil
 }
 
 //inyectar el seevicio de rabbitmq

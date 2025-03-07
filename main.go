@@ -5,6 +5,7 @@ import (
 	infraClient "tienda/src/Client/Infraestructure"
 	routesClient "tienda/src/Client/Infraestructure/routes"
 	infra "tienda/src/Notification/Infraestructure"
+	"tienda/src/Notification/Infraestructure/adapters"
 	routesNotification "tienda/src/Notification/Infraestructure/routes"
 	infraestructure "tienda/src/Products/Infraestructure"
 	routes "tienda/src/Products/Infraestructure/routes"
@@ -34,8 +35,8 @@ func main() {
 	routes.SetRoutes(router, infraestructure.PostProductsHandler, infraestructure.GetProductsHandler,
 		infraestructure.GetOneProductHadler, infraestructure.DeleteProductHadler, infraestructure.PutProductHadler, infraestructure.GetNewProductsHandler, infraestructure.LongPollingHandler)
 	// conexion rabbit
-	//rabbitMQAdapter := adapters.InitRabbitMQ()
-	//defer rabbitMQAdapter.Close()
+	rabbitMQAdapter := adapters.InitRabbitMQ()
+	defer rabbitMQAdapter.Close()
 
 	log.Println("Server started at :8080")
 	log.Fatal(router.Run())

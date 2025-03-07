@@ -22,14 +22,11 @@ func (r *PostgresNotification) Send(notification entities.Notification, client e
 	if err != nil {
 		return err
 	}
-
-	// Simular el envío de la notificación por correo electrónico
-
 	return nil
 }
 
 func (r *PostgresNotification) GetMessages() ([]entities.Notification, error) {
-	rows, err := r.db.Query("SELECT id, client_id, content FROM notifications")
+	rows, err := r.db.Query("SELECT message_id, notification_content, client_id, client_name FROM notifications")
 	if err != nil {
 		return nil, err
 	}
@@ -38,11 +35,20 @@ func (r *PostgresNotification) GetMessages() ([]entities.Notification, error) {
 	var notifications []entities.Notification
 	for rows.Next() {
 		var notification entities.Notification
-		if err := rows.Scan(&notification.ID, &notification.ClientID, &notification.Content); err != nil {
+		var clientName string 
+		if err := rows.Scan(&notification.ID, &notification.Content, &notification.ClientID, &clientName); err != nil {
 			return nil, err
 		}
+
+
+
 		notifications = append(notifications, notification)
 	}
+
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
 	return notifications, nil
 }
 

@@ -10,8 +10,8 @@ func NewRabbitMQService(rabbitMQUseCase *repositories.RabbitMQUseCase) *RabbitMQ
 	return &RabbitMQService{rabbitMQUseCase: rabbitMQUseCase}
 }
 
-func (svc *RabbitMQService) SendMessage(message string, id int) error {
-	return svc.rabbitMQUseCase.Execute(message, id)
+func (svc *RabbitMQService) SendMessage(message string, id int, name string) error {
+	return svc.rabbitMQUseCase.Execute(message, id, name)
 }
 
 //socket.io
